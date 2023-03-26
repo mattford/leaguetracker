@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomePageController;
+use App\Http\Controllers\LeagueListController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomePageController::class, 'index']);
 Route::get('/me', [ProfileController::class, 'view']);
+Route::prefix('leagues')->group(function () {
+    Route::get('', [LeagueListController::class, 'index']);
+    Route::get('new', [LeagueListController::class, 'add']);
+});
